@@ -19,9 +19,7 @@ const Pagination = props => {
   return (
     <nav>
       <ul className="pagination">
-        {pageCountArr.map((
-          page //for each page render a pagination ui for it
-        ) => (
+        {pageCountArr.map(page => (
           <li
             key={page}
             //if the current page is the same as the page we are on then add the class "active" to illustrate this
