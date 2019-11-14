@@ -4,7 +4,7 @@ import Movies from "./components/movies.jsx";
 
 function App() {
   return (
-    <main role="main" className="container">
+    <main role="main">
       <Movies />
     </main>
   );
