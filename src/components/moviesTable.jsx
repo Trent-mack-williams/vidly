@@ -2,36 +2,22 @@ import React, { Component } from "react";
 import HeartIcon from "./common/heart.jsx";
 
 class MoviesTable extends Component {
-  raiseSort = path => {
-    const sortColumn = { ...this.props.sortColumn };
-    if (sortColumn.path === path) {
-      sortColumn.order = sortColumn.order === "asc" ? "desc" : "asc";
-    } else {
-      sortColumn.path = path;
-      sortColumn.order = "asc";
-    }
-    this.props.onSort(sortColumn);
-  };
-
   render() {
     const { pagesMovies, onDelete, onLike, onSort } = this.props;
     return (
       <table className="movies table">
         <thead>
           <tr className="row">
-            <th className="col-4" onClick={() => this.raiseSort("title")}>
+            <th className="col-4" onClick={() => onSort("title")}>
               Title
             </th>
-            <th className="col" onClick={() => this.raiseSort("genre.name")}>
+            <th className="col" onClick={() => onSort("genre.name")}>
               Genre
             </th>
-            <th className="col" onClick={() => this.raiseSort("numberInStock")}>
+            <th className="col" onClick={() => onSort("numberInStock")}>
               Stock
             </th>
-            <th
-              className="col"
-              onClick={() => this.raiseSort("dailyRentalRate")}
-            >
+            <th className="col" onClick={() => onSort("dailyRentalRate")}>
               Rate
             </th>
             <th className="col">Delete</th>

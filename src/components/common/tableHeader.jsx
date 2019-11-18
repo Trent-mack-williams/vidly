@@ -1,0 +1,32 @@
+import React, { Component } from "react";
+
+class TableHeader extends Component {
+  raiseSort = path => {
+    const sortColumn = { ...this.props.sortColumn };
+    console.log(path);
+    console.log(sortColumn);
+    if (sortColumn.path === path)
+      sortColumn.order = sortColumn.order === "asc" ? "desc" : "asc";
+    else {
+      sortColumn.path = path;
+      sortColumn.order = "asc";
+    }
+    this.props.onSort(sortColumn);
+  };
+
+  render() {
+    return (
+      <thead>
+        <tr>
+          {this.props.columns.map(column => (
+            <th onClick={() => this.raiseSort(column.path)}>{column.label}</th>
+          ))}
+          <th className="">Like</th>
+          <th className="">Delete</th>
+        </tr>
+      </thead>
+    );
+  }
+}
+
+export default TableHeader;
