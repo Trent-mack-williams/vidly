@@ -1,9 +1,11 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import HeartIcon from "./common/heart.jsx";
 
 class MoviesTable extends Component {
   render() {
     const { pagesMovies, onDelete, onLike, onSort } = this.props;
+    console.log(pagesMovies);
     return (
       <table className="movies table">
         <thead>
@@ -27,7 +29,9 @@ class MoviesTable extends Component {
         <tbody>
           {pagesMovies.map(movie => (
             <tr key={movie._id} className="row">
-              <td className="col-4">{movie.title}</td>
+              <td className="col-4">
+                <Link to={`/movieForm/${movie._id}`}>{movie.title}</Link>
+              </td>
               <td className="col">{movie.genre.name}</td>
               <td className="col">{movie.numberInStock}</td>
               <td className="col">{movie.dailyRentalRate}</td>
