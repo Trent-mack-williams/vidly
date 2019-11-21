@@ -1,18 +1,29 @@
 import React, { Component } from "react";
+import Input from "./common/input";
 
 class LoginForm extends Component {
   state = {
     account: {
       username: "",
       password: ""
-    }
+    },
+    errors: {}
   };
+
+  validate = () => {
+    return { username: "Username is required" };
+  };
+
   //Handles
   handleSubmit = e => {
     e.preventDefault();
+
+    const errors = this.validate();
+    this.setState({ errors });
+    if (errors) return;
+
     console.log("formsubmit behaviour averted");
   };
-
   handleChange = e => {
     //clone the state's account
     const account = { ...this.state.account };
@@ -28,30 +39,22 @@ class LoginForm extends Component {
       <div>
         <h1>Login In</h1>
         <form onSubmit={this.handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="username">Username</label>
-            <input
-              name="username"
-              value={account.username}
-              onChange={this.handleChange}
-              type="text"
-              className="form-control"
-              id="username"
-              placeholder="Enter Username"
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="Password">Password</label>
-            <input
-              name="password"
-              value={account.password}
-              onChange={this.handleChange}
-              type="password"
-              className="form-control"
-              id="Password"
-              placeholder="Password"
-            />
-          </div>
+          <Input
+            name="username"
+            label="Username"
+            value={account.username}
+            onChange={this.handleChange}
+            type="text"
+            placeholder="Enter your name"
+          />
+          <Input
+            name="password"
+            label="Password"
+            value={account.password}
+            onChange={this.handleChange}
+            type="password"
+            placeholder="Enter your Password"
+          />
           <button type="submit" className="btn btn-primary">
             Login
           </button>
