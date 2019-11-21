@@ -10,7 +10,7 @@ const Pagination = props => {
     return null;
   }
 
-  //make a dynamic array of numbers starting from 1 up the the pagesCount to reflect each page that will be needed
+  //make a dynamic array of numbers starting from 1 up till the pagesCount number to reflect each page that will be needed
   const pageCountArr = [];
   for (var i = 0; i < Math.ceil(pagesCount); ++i) {
     pageCountArr.push(i + 1);
